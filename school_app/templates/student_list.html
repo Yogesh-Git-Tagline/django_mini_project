@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block student_list %}
+<div class="col-sm-6 forms_div">
+    <h2 class='bg-danger text-center mt-1 text-light border rounded-pill'>LIST OF STUDENTS</h2>
+
+    {% comment %} this shows the event in message format  {% endcomment %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class='alert alert-success text-center alert-dismissible'>
+                <strong>{{message}}</strong>
+                <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% for student in students %}
+    <div class="bg-success mt-1 p-2 border border-1 border-dark text-light forms">
+        <div class="row">
+            <div class="col-sm-2">
+                <img src="{{student.photo.url}}" alt="student_photo" height='150px' width='200px'>
+            </div>
+            <div class="col-sm-6 offset-2">
+                <ul>
+                    <li><strong>Name : </strong> {{student.first_name}} {{student.last_name}}</li>
+                    <li><strong>Email : </strong> {{student.email_id}}</li>
+                    <li><strong>Contact No : </strong> {{student.contact_number}} </li>
+                    <li><strong>Address : </strong> {{student.address}}</li>
+                    <a href="{% url "update_student" student.id %}" class='btn btn-warning btn-sm'>✍🏽 Edit</a>
+
+                    {% comment %} below form is perform deleting operation after confirming yes/no from user
+                    {% endcomment %}
+                    <form action="{% url "delete_student" student.id %}" method='post' class='d-inline'
+                        onsubmit="return confirm('are you sure to delete {{student.first_name}} ?')">
+                        {% csrf_token %}
+                        <input type="submit" value="❎ Delete" class='btn btn-sm btn-danger'>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% comment %} below code is for divide the data in different pages using pagination {% endcomment %}
+    <nav class='mt-2 offset-4'>
+        <ul class="pagination pagination-sm">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a href="?page={{page_obj.previous_page_number}}" class="page-link">⬅️ Previous</a>
+            </li>
+            {% endif %}
+
+            <li class="page-item active">
+                <a href="#" class="page-link">page {{page_obj.number}} of {{page_obj.paginator.num_pages}}</a>
+            </li>
+
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a href="?page={{page_obj.next_page_number}}" class="page-link">Next ➡️</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+{% endblock student_list %}

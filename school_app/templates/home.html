@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block home %}
+<div class="col-sm-8 home">
+    <h2 class="alert alert-dark text-center mt-1">WELOCME TO THE DEPARTMENT</h2>
+    <div class='border border-2 alert-danger p-3 border-dark intro'>
+        <p class='text-dark'>Django is a high-level Python web framework that enables rapid development of secure and
+            maintainable websites. Built by experienced developers, Django takes care of much of the hassle of web
+            development, so you can focus on writing your app without needing to reinvent the wheel.
+            The Django web framework is a free, open source framework that can speed up development of a web application
+            being built in the Python programming language. Django—pronounced “Jango,” named after the famous jazz
+            guitarist Django Reinhardt—is a free, open source framework that was first publicly released in 2005.
+            The numerous advantages of web development using Python and Django framework can be summarized in three
+            short phrases: less effort, less time, and less money. You can use Django to start a small, simple project,
+            and continue using it when the project grows, ensuring its high quality, functionality, and security. </p>
+        <a href="{% url "student_list" %}" class='btn btn-danger'>👁 View Students</a>
+    </div>
+</div>
+{% endblock home %}

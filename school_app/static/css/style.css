@@ -1,0 +1,21 @@
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.home {
+    margin-top: 170px;
+    margin-left: 5px;
+}
+
+.intro {
+    border-radius: 10px;
+}
+
+.forms_div {
+    margin-left: 30px;
+}
+
+.forms {
+    border-radius: 20px;
+}

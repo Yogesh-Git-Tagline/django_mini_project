@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block add_student %}
+<div class="col-sm-4 forms_div">
+    <h2 class='bg-info text-center text-dark border rounded-pill mt-1'>ADD NEW STUDENT</h2>
+    <div class="bg-warning p-3 forms">
+        <form method="post" novalidate enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form %}
+            <strong class='text-dark'>{{field.label_tag}}</strong> {{field}} <b
+                class='text-danger fst-italic'>{{field.errors|striptags}}</b> <br>
+            {% endfor %}
+            <input type="submit" value="✅ Submit" class='btn btn-success mt-1'>
+            <a href="{% url "homepage" %}" class='btn btn-dark mt-1' {{ request.META.HTTP_REFERER }}>❌ Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock add_student %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block contact %}
+<div class="col-sm-6 forms_div">
+    <h2 class='alert alert-info text-center mt-1 rounded-pill border border-1 border-dark'>CONTACT US</h2>
+    <div class='alert-success p-3 border border-1 border-dark forms'>
+        <form action="">
+            <label for="username" class='fw-bold text-dark'>Your Name:</label>
+            <input type="text" name="username" class='form-control' placeholder='Enter your name' required> <br>
+
+            <label for="email" class='fw-bold text-dark'>Email:</label>
+            <input type="email" name="email" class='form-control' placeholder='Enter your email' required> <br>
+
+            <label for="message" class='fw-bold text-dark'>Message:</label>
+            <textarea name="message" class='form-control' cols="30" rows="5" placeholder='what you want to tell us...'
+                required></textarea>
+
+            <input type="submit" value="✅ Submit" class='btn btn-success mt-2 offset-5'>
+        </form>
+    </div>
+    <a href="{% url "homepage" %}" class='btn btn-danger mt-2'>👈 Home</a>
+</div>
+{% endblock contact %}

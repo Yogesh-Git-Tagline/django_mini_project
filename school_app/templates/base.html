@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School App</title>
+
+    {% comment %} below 3 lines is for implement boostrap in our project {% endcomment %}
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href={% static "css/style.css" %}>
+</head>
+
+<body style="background-image: url('{% static "images/tagline.png" %}');">
+
+    {% include "navbar.html" %}
+
+    {% block home %}
+    <div class="container-fluid">
+        <div class="row">
+
+        </div>
+    </div>
+    {% endblock home %}
+
+
+    {% block student_list %}
+    <div class="container-fluid">
+        <div class="row">
+
+        </div>
+    </div>
+    {% endblock student_list %}
+
+
+    {% block add_student %}
+    <div class="container-fluid">
+        <div class="row">
+
+        </div>
+    </div>
+    {% endblock add_student %}
+
+    {% block update_student %}
+    <div class="container-fluid">
+        <div class="row">
+
+        </div>
+    </div>
+    {% endblock update_student %}
+
+    {% block contact %}
+    <div class="container-fluid">
+        <div class="row">
+
+        </div>
+    </div>
+    {% endblock contact %}
+
+</body>
+
+</html>
