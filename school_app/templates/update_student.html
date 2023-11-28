@@ -4,14 +4,30 @@
 <div class="col-sm-4 forms_div">
     <h2 class='bg-secondary text-center text-light border rounded-pill mt-1'>UPDATE STUDENT</h2>
     <div class="alert-danger p-3 forms">
-        <form method="post" novalidate enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {% for field in form %}
-            <strong class='text-dark'>{{field.label_tag}}</strong> {{field}} <b
-                class='text-danger'>{{field.errors|striptags}}</b> <br>
-            {% endfor %}
+            <label><strong class='text-dark'>First Name:</strong></label>
+            <input type="text" name="first_name" value="{{form.instance.first_name}}" class='form-control'
+                required>{{form.instance.first_name.errors|striptags}}
+            <label><strong class='text-dark'>Last Name:</strong></label>
+            <input type="text" name="last_name" value="{{form.instance.last_name}}" class='form-control' required>
+            <label><strong class='text-dark'>Email:</strong></label>
+            <input type="email" name="email_id" value="{{form.instance.email_id}}" class='form-control' required>
+            <label><strong class='text-dark'>Contact No:</strong></label>
+            <input type="number" name="contact_number" value="{{form.instance.contact_number}}" class='form-control'
+                required>
+            <label><strong class='text-dark'>Address:</strong></label>
+            <textarea name="address" class='form-control' required> {{form.instance.address}} </textarea>
+            <label><strong class='text-dark'>Photo:</strong></label><br>
+            <img src="{{form.instance.photo.url}}" id="stud_img" alt="stud_img" height='100px' width='100px'
+                class='card border border-1 border-dark'> Currently:{{form.instance.photo}}
+
+            <input type="file" name="photo" accept="image/*"
+                onchange="document.getElementById('stud_img').src = window.URL.createObjectURL(this.files[0])"
+                class="form-control">
+
             <input type="submit" value="✅ Update" class='btn btn-success mt-1'>
-            <button class='btn btn-dark mt-1' {{ request.META.HTTP_REFERER }}>❌ Cancel</button>
+            <a href="{% url "student_list" %}" class='btn btn-dark'>❌ Cancel</a>
         </form>
     </div>
 </div>
